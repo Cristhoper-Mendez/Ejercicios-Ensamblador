@@ -1,7 +1,8 @@
 section .data
     x dw '7'
     y dw '2'
-    msg db  "resta de x y y es "
+    z dw '1'
+    msg db  "Resultado de restar 7, 2 y 1 es:", 10
     len equ $ - msg
 
 segment .bss
@@ -20,6 +21,13 @@ _start:
     add     eax, '0'
 
     mov     [result], eax ; Asignar valor de la operacion a result
+
+    mov     eax, [result]
+    mov     ebx, [z]
+    sub     ebx, '0'
+    sub     eax, ebx
+
+    mov [result], eax
 
     mov     ecx, msg
     mov     edx, len
